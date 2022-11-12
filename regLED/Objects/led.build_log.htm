@@ -1,0 +1,64 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: you wan, nvidia, LIC=HN0AE-52UT4-30FNC-73R53-E3BTY-K4MV3
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.33.0.0
+Toolchain Path:  D:\Program Files\arm keil\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.15
+Assembler:       Armasm.exe V6.15
+Linker/Locator:  ArmLink.exe V6.15
+Library Manager: ArmAr.exe V6.15
+Hex Converter:   FromElf.exe V6.15
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.4.0
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TARMCM1.DLL V1.14.3.0
+ 
+<h2>Project:</h2>
+D:\³ÌÐò\arm\armTeach\regLED\led.uvprojx
+Project File Date:  11/12/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.15', folder: 'D:\Program Files\arm keil\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+main.c(16): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    *(uint32_t *)(0x48000800 + 0x00) &= ~(7 << 25);
+                                     ~~ ^~~~~~~~~~
+main.c(23): warning: no previous prototype for function 'SystemInit' [-Wmissing-prototypes]
+void SystemInit()
+     ^
+main.c(23): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void SystemInit()
+^
+static 
+main.c(23): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void SystemInit()
+               ^
+3 warnings generated.
+compiling main.c...
+assembling startup_MM32SPIN2xx_p.s...
+linking...
+Program Size: Code=436 RO-data=196 RW-data=0 ZI-data=1632  
+".\Objects\led.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: MindMotion
+                http://www.mindmotion.com.cn/Download/MDK_KEIL/MindMotion.MM32SPIN2x_DFP.1.1.5.pack
+                MindMotion.MM32SPIN2x_DFP.1.1.5
+                MindMotion MM32SPIN2x Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  D:\Program Files\arm keil\packs\MindMotion\MM32SPIN2x_DFP\1.1.5\Device\MM32SPIN2x\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>

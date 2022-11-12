@@ -1,0 +1,5 @@
+Dependencies for Project 'led', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6150000::V6.15::ARMCLANG
+F (.\main.c)(0x636F9652)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I"D:/Program Files/arm keil/packs/MindMotion/MM32SPIN2x_DFP/1.1.5/Device/MM32SPIN2x/Include"-I"D:/Program Files/arm keil/ARM/CMSIS/Include"-D__UVISION_VERSION="533" -DMM32SPIN27PS-o ./objects/main.o -MD)
+I (D:\Program Files\arm keil\ARM\ARMCLANG\include\stdint.h)(0x5F36D0A8)
+F (.\startup_MM32SPIN2xx_p.s)(0x636F90B2)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto -c-gdwarf-3-I"D:/Program Files/arm keil/packs/MindMotion/MM32SPIN2x_DFP/1.1.5/Device/MM32SPIN2x/Include"-I"D:/Program Files/arm keil/ARM/CMSIS/Include"-Wa,armasm,--pd,"__UVISION_VERSION SETA 533" -Wa,armasm,--pd,"MM32SPIN27PS SETA 1"-o ./objects/startup_mm32spin2xx_p.o)
