@@ -1,9 +1,0 @@
-D:/程序/arm/armTeach/build/CMakeFiles/NightlyMemoryCheck.dir
-D:/程序/arm/armTeach/build/CMakeFiles/Experimental.dir
-D:/程序/arm/armTeach/build/CMakeFiles/Continuous.dir
-D:/程序/arm/armTeach/build/CMakeFiles/Nightly.dir
-D:/程序/arm/armTeach/build/CMakeFiles/lvYu.dir
-D:/程序/arm/armTeach/build/CMakeFiles/PACKAGE.dir
-D:/程序/arm/armTeach/build/CMakeFiles/RUN_TESTS.dir
-D:/程序/arm/armTeach/build/CMakeFiles/ALL_BUILD.dir
-D:/程序/arm/armTeach/build/CMakeFiles/ZERO_CHECK.dir
