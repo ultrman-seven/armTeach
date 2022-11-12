@@ -118,9 +118,13 @@ int main(int argc, char const *argv[])
 
 1. 在 STM32 中，`uint8_t *`和 `double *`所占用储存单元的大小分别是：
 2. 给 32 位 CPU 的电脑插上 8G 的内存条，结果是：
+
    A. 擦电开机轻松秒杀
+
    B. 进不去系统
+
    C. 可以进系统，但是内存条只能用一半
+   
    D. 午安大电流
 3. 以下程序的运行结果是：(运行环境：Core i5(64bit)，Windows10)
    ```C
