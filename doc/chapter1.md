@@ -118,10 +118,10 @@ int main(int argc, char const *argv[])
 
 1. 在 STM32 中，`uint8_t *`和 `double *`所占用储存单元的大小分别是：
 2. 给 32 位 CPU 的电脑插上 8G 的内存条，结果是：
-   A.
-   B.
-   C.
-   D.
+   A. 擦电开机轻松秒杀
+   B. 进不去系统
+   C. 可以进系统，但是内存条只能用一半
+   D. 午安大电流
 3. 以下程序的运行结果是：(运行环境：Core i5(64bit)，Windows10)
    ```C
    #include "stdio.h"
@@ -140,40 +140,40 @@ int main(int argc, char const *argv[])
             printf("d2 = 0x%x\n", d2);
 
     }
-    ```
+   ```
 4. 以下程序的运行结果是：(运行环境：MM32f3277(32bit arm cpu))
-    ```C
-    #include "stdio.h"
-    #include "stdint.h"
+   ```C
+   #include "stdio.h"
+   #include "stdint.h"
 
-    int main(int argc, char const *argv[])
-    {
-        uint32_t dat;
-        uint64_t dat_add = (uint64_t)&dat;
-        uint16_t *d0;
-        uint8_t *d1, *d2;
+   int main(int argc, char const *argv[])
+   {
+       uint32_t dat;
+       uint64_t dat_add = (uint64_t)&dat;
+       uint16_t *d0;
+       uint8_t *d1, *d2;
 
-        d1 = (uint8_t *)dat;
-        d2 = (uint8_t *)(dat + 3);
-        d0 = (uint16_t *)(dat + 1);
+       d1 = (uint8_t *)dat;
+       d2 = (uint8_t *)(dat + 3);
+       d0 = (uint16_t *)(dat + 1);
 
-        *d0 = 0xfe;
-        *d1 = 0x12;
-        *d2 = 0x56;
+       *d0 = 0xfe;
+       *d1 = 0x12;
+       *d2 = 0x56;
 
-        printf("dat = 0x%x\n", dat);
-    }
-    ```
+       printf("dat = 0x%x\n", dat);
+   }
+   ```
 5. 以下程序的运行结果是：(运行环境：MM32f3277(32bit arm cpu))
-    ```C
-    #include "stdio.h"
-    #include "stdint.h"
+   ```C
+   #include "stdio.h"
+   #include "stdint.h"
 
-    int main(int argc, char const *argv[])
-    {
-        uint16_t dat[] = {0xfeab, 0x1234, 0x9876};
-        uint32_t d0 = *(uint32_t *)(dat + 1);
+   int main(int argc, char const *argv[])
+   {
+       uint16_t dat[] = {0xfeab, 0x1234, 0x9876};
+       uint32_t d0 = *(uint32_t *)(dat + 1);
 
-        printf("d0 = 0x%x\n", d0);
-    }
-    ```
+       printf("d0 = 0x%x\n", d0);
+   }
+   ```
