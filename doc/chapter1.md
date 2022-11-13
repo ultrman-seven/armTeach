@@ -148,9 +148,9 @@ int main(int argc, char const *argv[])
     {
         uint32_t dat = 0x12345678;
         uint64_t dat_add = (uint64_t)&dat;
-        uint16_t d0 = _(uint16_t _)dat_add;
-        uint8_t d1 = _(uint8_t _)dat_add;
-        uint8_t d2 = _(uint8_t \*)(dat_add + 4);
+        uint16_t d0 = *(uint16_t *)dat_add;
+        uint8_t d1 = *(uint8_t *)dat_add;
+        uint8_t d2 = *(uint8_t *)(dat_add + 4);
 
             printf("d0 = 0x%x\n", d0);
             printf("d1 = 0x%x\n", d1);
