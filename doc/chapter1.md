@@ -171,9 +171,9 @@ int main(int argc, char const *argv[])
        uint16_t *d0;
        uint8_t *d1, *d2;
 
-       d1 = (uint8_t *)dat;
-       d2 = (uint8_t *)(dat + 3);
-       d0 = (uint16_t *)(dat + 1);
+       d1 = (uint8_t *)dat_add;
+       d2 = (uint8_t *)(dat_add + 3);
+       d0 = (uint16_t *)(dat_add + 1);
 
        *d0 = 0xfe;
        *d1 = 0x12;
