@@ -1,6 +1,6 @@
 # 指针（地址）与数据存储
 
-## C语言中创建变量的过程
+## C 语言中创建变量的过程
 
 在下列程序中
 
@@ -22,14 +22,13 @@ int main(int argc, char const *argv[])
 
 ## 指针
 
-数CPU的不同位，代表寻址的能力
------------------------------
+## 数 CPU 的不同位，代表寻址的能力
 
-| CPU位数/bit | 地址位数 | 举例                  | 寻址范围    |
-| ----------- | -------- | --------------------- | ----------- |
-| 8           | 8        | 0x23                  | 0~255 bit   |
-| 32          | 32       | 0x4008 8238           | 0~4G        |
-| 64          | 64       | 0x4008 8238 2300 ffff | 0~16777216T |
+| CPU 位数/bit | 地址位数 | 举例                  | 寻址范围    |
+| ------------ | -------- | --------------------- | ----------- |
+| 8            | 8        | 0x23                  | 0~255 bit   |
+| 32           | 32       | 0x4008 8238           | 0~4G        |
+| 64           | 64       | 0x4008 8238 2300 ffff | 0~16777216T |
 
 ```c
 #include "stdio.h"
@@ -123,6 +122,49 @@ int main(int argc, char const *argv[])
 ```
 
 ## 不同平台下
+
+## 结构体和联合体
+
+### 结构体与联合体的大小与地址
+
+1. 结构体
+   看如下结构体的定义
+
+```C
+struct tmp{uint16_t d0,d1;uint32_t d2};
+```
+
+```c
+#include "stdio.h"
+#include "stdint.h"
+
+typedef struct
+{
+    uint16_t d0, d1;
+    uint32_t d2;
+} tmpStructDef;
+
+
+int main(int argc, char const *argv[])
+{
+    tmpStructDef tmp;
+    uint64_t tmpAdd, d0Add, d1Add, d2Add;
+
+    tmpAdd = (uint64_t)&tmp;
+
+    d0Add = (uint64_t) & (tmp.d0);
+    d1Add = (uint64_t) & (tmp.d1);
+    d2Add = (uint64_t) & (tmp.d2);
+
+    printf("tmp:0x%x\n", *(uint32_t *)&tmpAdd);
+    printf("d0:0x%x\n", *(uint32_t *)&d0Add);
+    printf("d2:0x%x\n", *(uint32_t *)&d1Add);
+    printf("d1:0x%x\n", *(uint32_t *)&d2Add);
+}
+
+```
+
+3. 联合体
 
 # 单片机
 
@@ -221,4 +263,4 @@ int main(int argc, char const *argv[])
        printf("dat = 0x%x\n", dat);
    }
    ```
-7. 对照stm32f103手册，写程序使PB5和PB1输出高电平
+7. 对照 stm32f103 手册，写程序使 PB5 和 PB1 输出高电平
