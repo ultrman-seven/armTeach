@@ -1,0 +1,16 @@
+\begin{circuitikz}
+    \draw (0,1)node[npn](q1){$Q_1$};
+    \draw (0,-1)node[pnp](q2){$Q_1$};
+    \draw (-2,0) to[short,o-*] ($(q1.base)!0.5!0!:(q2.base)$);
+    \node at (-2,0.5) {input};
+    \draw (q1.base) to[short] (q2.base);
+    \draw (q1.emitter) to[short] (q2.emitter);
+    \draw (0,2)node[](vcc){Vcc} to[short] (q1.collector);
+    \draw (q2.collector) to[short] node[ground]{GND}(0,-2);
+    \draw ($(q1.emitter)!0.5!0!:(q2.emitter)$) to[short,*-o] (1,0);
+    \node at (2,0) {output};
+    % to[V,v=$U_q$] (0,2) % 电压源
+    % to[short] (2,2)%坐标(2,2)做为起始点，(2,0)做为终点，绘制电阻。_R_代表电压源，_R=$R_1$_绘制标识。
+    % to[R=$R_1$] (2,0) % 电阻
+    % to[short] (0,0);%注意结尾的分号！
+\end{circuitikz}

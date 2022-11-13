@@ -1,1 +1,8 @@
 build
+*.aux
+*.log
+Objects
+Listings
+JLinkLog.txt
+JLinkSettings.ini
+*.钨钇
