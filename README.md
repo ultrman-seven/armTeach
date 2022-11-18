@@ -1,4 +1,4 @@
-# armTeach !()[https://img.shields.io/github/license/ultrman-seven/armTeach]
+# armTeach ![](https://img.shields.io/github/license/ultrman-seven/armTeach) ![](https://img.shields.io/github/last-commit/ultrman-seven/armTeach) ![](https://img.shields.io/github/repo-size/ultrman-seven/armTeach)
 
 arm内核单片机从零开始
 
