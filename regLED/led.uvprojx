@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\regLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -392,6 +392,11 @@
               <FileName>startup_MM32SPIN2xx_p.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup_MM32SPIN2xx_p.s</FilePath>
+            </File>
+            <File>
+              <FileName>wy_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\wy_gpio.c</FilePath>
             </File>
           </Files>
         </Group>
