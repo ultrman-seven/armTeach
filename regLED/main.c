@@ -1,6 +1,6 @@
 #include "stdint.h"
 #include "wy_gpio.h"
-
+void SystemInit (void);
 int main()
 {
     GPIO_InitStructTypedef g;
@@ -19,6 +19,6 @@ int main()
     }
 }
 
-void SystemInit()
+void SystemInit(void)
 {
 }

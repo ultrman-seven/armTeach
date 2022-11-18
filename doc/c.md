@@ -12,36 +12,23 @@ datawidth
 
 123
 
-# 456
+# 位运算
 
-21351
+问题
+----
 
-311351
+1. 怎么优化以下代码，以提高运算速度？
+   ```c
+    uint8_t remainder;
+    uint8_t quotient;
 
-3131
+    remainder = 103 % 2;
+    quotient = 103 / 2;
+   ```
+2. 
 
-311
-
-231
-
-32
-
-33
-
-3
-
-23
-
-320
-
-0
-
-00
-
-# 宏定义
+# 宏定义 {def}
 
 123
-
-<h2 id="def" style="display:none;"> </h2>
 
 45

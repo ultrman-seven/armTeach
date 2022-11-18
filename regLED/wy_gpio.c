@@ -4,12 +4,12 @@ void GPIO_Init(GPIO_StructTypedef *gpioN, GPIO_InitStructTypedef *gpioInit)
 {
     uint8_t pinPosition;
     uint8_t cnt;
-    uint64_t *gpioCR = (uint64_t *)&(gpioN->CRL);
     uint64_t mask;
+    uint64_t *gpioCR = (uint64_t *)((uint32_t) & (gpioN->CRL));
     for (cnt = 0; cnt < 16; cnt++)
         if (gpioInit->pin & ((0x01) << cnt))
         {
-            pinPosition = cnt << 2;
+            pinPosition = (uint8_t)(cnt << 2);
             mask = (uint64_t)0x0f << pinPosition;
             mask = ~mask;
             *gpioCR &= mask;
