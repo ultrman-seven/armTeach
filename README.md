@@ -1,4 +1,4 @@
-# armTeach
+# armTeach !()[https://img.shields.io/github/license/ultrman-seven/armTeach]
 
 arm内核单片机从零开始
 
@@ -17,3 +17,5 @@ arm内核单片机从零开始
 8. SPI
 9. IIC
 10. DMA
+
+[*附录*——C语言知识摘要](./doc/c.md)
