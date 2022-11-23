@@ -91,7 +91,7 @@ int main(int argc, char const *argv[])
 
 > C 语言
 >
-> [宏定义](./c.md#def "点击查看详情")
+> [宏定义](./c.md#宏定义 "点击查看详情")
 >
 > #define def(n) a##n
 >
