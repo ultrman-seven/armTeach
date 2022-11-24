@@ -72,7 +72,8 @@ typedef struct
 void GPIO_Init(GPIO_StructTypedef *gpioN, GPIO_InitStructTypedef *gpioInit);
 void GPIO_Setbit(GPIO_StructTypedef *gpioN, uint16_t pin);
 void GPIO_Resetbit(GPIO_StructTypedef *gpioN, uint16_t pin);
-// void GPIO_readInputDataBit();
-// void GPIO_readOutputDataBit();
+uint8_t GPIO_readInputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin);
+uint16_t GPIO_readInputData(GPIO_StructTypedef *gpioN);
+uint8_t GPIO_readOutputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin);
 
 #endif //__WY_GPIO_H__

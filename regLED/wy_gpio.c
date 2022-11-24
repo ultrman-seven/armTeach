@@ -39,3 +39,17 @@ void GPIO_Resetbit(GPIO_StructTypedef *gpioN, uint16_t pin)
 {
     gpioN->BRR = pin;
 }
+
+uint8_t GPIO_readInputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin)
+{
+    return (gpioN->IDR & pin) ? 1 : 0;
+}
+
+uint8_t GPIO_readOutputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin)
+{
+    return (gpioN->ODR & pin) ? 1 : 0;
+}
+uint16_t GPIO_readInputData(GPIO_StructTypedef *gpioN)
+{
+    return gpioN->IDR;
+}
