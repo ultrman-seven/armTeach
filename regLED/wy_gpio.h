@@ -1,6 +1,6 @@
 #ifndef __WY_GPIO_H__
 #define __WY_GPIO_H__
-#include "stdint.h"
+#include "wy_common.h"
 
 typedef struct
 {
@@ -70,10 +70,17 @@ typedef struct
 } GPIO_InitStructTypedef;
 
 void GPIO_Init(GPIO_StructTypedef *gpioN, GPIO_InitStructTypedef *gpioInit);
+
 void GPIO_Setbit(GPIO_StructTypedef *gpioN, uint16_t pin);
 void GPIO_Resetbit(GPIO_StructTypedef *gpioN, uint16_t pin);
+void GPIO_WriteBit(GPIO_StructTypedef *gpioN, uint16_t pin, uint8_t pinVal);
+void GPIO_Write(GPIO_StructTypedef *gpioN, uint16_t portVal);
+
 uint8_t GPIO_readInputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin);
 uint16_t GPIO_readInputData(GPIO_StructTypedef *gpioN);
 uint8_t GPIO_readOutputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin);
+uint16_t GPIO_readOutputData(GPIO_StructTypedef *gpioN);
 
+void GPIO_AF_Config(GPIO_StructTypedef *gpioN, uint8_t pinSource, uint8_t af);
+void GPIO_LOCK(GPIO_StructTypedef *gpioN, uint16_t pin, FunctionalState s);
 #endif //__WY_GPIO_H__

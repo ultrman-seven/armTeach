@@ -31,25 +31,50 @@ void GPIO_Init(GPIO_StructTypedef *gpioN, GPIO_InitStructTypedef *gpioInit)
         gpioN->ODR &= ~(gpioInit->pin);
 }
 
-void GPIO_Setbit(GPIO_StructTypedef *gpioN, uint16_t pin)
+void GPIO_Setbit(GPIO_StructTypedef *gpioN, uint16_t pin) { gpioN->BSRR = pin; }
+
+void GPIO_Resetbit(GPIO_StructTypedef *gpioN, uint16_t pin) { gpioN->BRR = pin; }
+
+uint8_t GPIO_readInputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin) { return (gpioN->IDR & pin) ? 1 : 0; }
+
+uint8_t GPIO_readOutputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin) { return (gpioN->ODR & pin) ? 1 : 0; }
+
+uint16_t GPIO_readInputData(GPIO_StructTypedef *gpioN) { return (uint16_t)gpioN->IDR; }
+
+uint16_t GPIO_readOutputData(GPIO_StructTypedef *gpioN) { return (uint16_t)gpioN->ODR; }
+
+void GPIO_LOCK(GPIO_StructTypedef *gpioN, uint16_t pin, FunctionalState s)
 {
-    gpioN->BSRR = pin;
-}
-void GPIO_Resetbit(GPIO_StructTypedef *gpioN, uint16_t pin)
-{
-    gpioN->BRR = pin;
+    gpioN->LCKR &= ~(uint32_t)(0x0100);
+    if (!(gpioN->LCKR & 0x0100))
+    {
+        if (s)
+            gpioN->LCKR |= pin;
+        else
+            gpioN->LCKR &= ~(uint32_t)pin;
+    }
+    gpioN->LCKR |= (uint32_t)(0x0100);
 }
 
-uint8_t GPIO_readInputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin)
+void GPIO_AF_Config(GPIO_StructTypedef *gpioN, uint8_t pinSource, uint8_t af)
 {
-    return (gpioN->IDR & pin) ? 1 : 0;
+    uint64_t *afr = (uint64_t *)(uint32_t) & (gpioN->AFRL);
+    uint64_t mask;
+    pinSource *= 4;
+    mask = 0x0f;
+    mask <<= pinSource;
+    *afr &= ~mask;
+    mask = af;
+    mask <<= pinSource;
+    *afr |= mask;
 }
 
-uint8_t GPIO_readOutputDataBit(GPIO_StructTypedef *gpioN, uint16_t pin)
+void GPIO_WriteBit(GPIO_StructTypedef *gpioN, uint16_t pin, uint8_t pinVal)
 {
-    return (gpioN->ODR & pin) ? 1 : 0;
+    if (pinVal)
+        gpioN->BSRR = pin;
+    else
+        gpioN->BRR = pin;
 }
-uint16_t GPIO_readInputData(GPIO_StructTypedef *gpioN)
-{
-    return gpioN->IDR;
-}
+
+void GPIO_Write(GPIO_StructTypedef *gpioN, uint16_t portVal) { gpioN->ODR = portVal; }
