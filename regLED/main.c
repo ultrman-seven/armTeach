@@ -11,6 +11,12 @@ void SystemInit(void);
 #define RCC_AHB_GPIOC_Pos (19)
 #define RCC_AHB_GPIOD_Pos (20)
 
+#define RED_PIN GPIO_Pin6
+#define RED_PORT GPIOC
+#define RED_LED RED_PORT,RED_PIN
+
+#define GREEN_PIN GPIO_Pin8
+
 int main()
 {
     GPIO_InitStructTypedef g;
@@ -19,10 +25,14 @@ int main()
     RCC_AHBENR |= (1 << RCC_AHB_GPIOD_Pos);
 
     // 初始化GPIO
-    g.pin = GPIO_Pin7 | GPIO_Pin6 | GPIO_Pin8;
+    g.pin = GPIO_Pin7 | RED_PIN | GREEN_PIN;
     g.mode = GPIO_Mode_pull_push;
     g.speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOC, &g);
+
+    g.pin = RED_PIN;
+    GPIO_Init(RED_PORT, &g);
+
 
     g.pin = GPIO_Pin6;
     g.mode = GPIO_Mode_IPU;
@@ -35,13 +45,13 @@ int main()
     {
         if (GPIO_readInputDataBit(GPIOD, GPIO_Pin6))
         {
-            GPIO_Setbit(GPIOC, GPIO_Pin6);
-            GPIO_Resetbit(GPIOC, GPIO_Pin8);
+            GPIO_Setbit(RED_LED);
+            GPIO_Resetbit(GPIOC, GREEN_PIN);
         }
         else
         {
-            GPIO_Resetbit(GPIOC, GPIO_Pin6);
-            GPIO_Setbit(GPIOC, GPIO_Pin8);
+            GPIO_Resetbit(RED_LED);
+            GPIO_Setbit(GPIOC, GREEN_PIN);
         }
     }
 }
