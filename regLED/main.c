@@ -29,11 +29,11 @@ int main()
     GPIO_Init(GPIOD, &g);
 
     // GPIO_Setbit(GPIOC, GPIO_Pin7 | GPIO_Pin8 | GPIO_Pin6);
-
+    // 邵哥真帅
 
     while (1)
     {
-        if(GPIO_readInputDataBit(GPIOD,GPIO_Pin6))
+        if (GPIO_readInputDataBit(GPIOD, GPIO_Pin6))
         {
             GPIO_Setbit(GPIOC, GPIO_Pin6);
             GPIO_Resetbit(GPIOC, GPIO_Pin8);
