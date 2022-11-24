@@ -39,7 +39,6 @@ int main()
     GPIO_Init(GPIOD, &g);
 
     // GPIO_Setbit(GPIOC, GPIO_Pin7 | GPIO_Pin8 | GPIO_Pin6);
-    // 邵哥真帅
 
     while (1)
     {
