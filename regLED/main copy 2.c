@@ -13,24 +13,9 @@ void SystemInit(void);
 
 #define RED_PIN GPIO_Pin6
 #define RED_PORT GPIOC
-#define RED_LED RED_PORT, RED_PIN
+#define RED_LED RED_PORT,RED_PIN
 
 #define GREEN_PIN GPIO_Pin8
-void GPIO_flip(GPIO_StructTypedef *gpioN, uint16_t pin);
-void GPIO_flip(GPIO_StructTypedef *gpioN, uint16_t pin)
-{
-    // HAL 版本
-    if (GPIO_readOutputDataBit(gpioN, pin))
-        GPIO_Resetbit(gpioN, pin);
-    else
-        GPIO_Setbit(gpioN, pin);
-
-    // 寄存器版本
-    // if (gpioN->ODR & pin)
-    //     gpioN->BRR = pin;
-    // else
-    //     gpioN->BSRR = pin;
-}
 
 int main()
 {
@@ -48,6 +33,7 @@ int main()
     g.pin = RED_PIN;
     GPIO_Init(RED_PORT, &g);
 
+
     g.pin = GPIO_Pin6;
     g.mode = GPIO_Mode_IPU;
     GPIO_Init(GPIOD, &g);
@@ -56,12 +42,15 @@ int main()
 
     while (1)
     {
-
         if (GPIO_readInputDataBit(GPIOD, GPIO_Pin6))
         {
-            GPIO_flip(RED_LED);
-            while ((GPIO_readInputDataBit(GPIOD, GPIO_Pin6)))
-                ;
+            GPIO_Setbit(RED_LED);
+            GPIO_Resetbit(GPIOC, GREEN_PIN);
+        }
+        else
+        {
+            GPIO_Resetbit(RED_LED);
+            GPIO_Setbit(GPIOC, GREEN_PIN);
         }
     }
 }
