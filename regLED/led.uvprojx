@@ -398,6 +398,11 @@
               <FileType>1</FileType>
               <FilePath>.\wy_gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\key.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

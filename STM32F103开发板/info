@@ -4,7 +4,7 @@
   "name": "stm32开发板f103",
   "content": "",
   "created_at": "2022-10-25 01:26:05",
-  "updated_at": "2022-11-25 20:06:30",
+  "updated_at": "2022-11-26 00:53:42",
   "stick": "",
   "documents": [
     {
@@ -9352,11 +9352,11 @@
         "41378b003fc347bfa1347f78a9628648": 6
       },
       "BOM": [],
-      "updateTime": 1669377990,
+      "updateTime": 1669395222,
       "createTime": 1668593679,
       "histories": [],
       "created_at": "2022-11-16 18:14:39",
-      "updated_at": "2022-11-25 20:06:30"
+      "updated_at": "2022-11-26 00:53:42"
     }
   ],
   "sort": [

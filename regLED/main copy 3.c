@@ -1,6 +1,5 @@
 #include "stdint.h"
 #include "wy_gpio.h"
-#include "wy_key.h"
 
 void SystemInit(void);
 
@@ -23,10 +22,6 @@ void SystemInit(void);
 #define BLUE_PIN GPIO_Pin7
 #define BLUE_PORT GPIOC
 #define BLUE_LED BLUE_PORT, BLUE_PIN
-
-#define LED_SINGLE_PIN GPIO_Pin9
-#define LED_SINGLE_PORT GPIOC
-#define LED_SINGLE LED_SINGLE_PORT, LED_SINGLE_PIN
 
 #define UP_PIN GPIO_Pin6
 #define UP_PORT GPIOD
@@ -56,27 +51,6 @@ void GPIO_flip(GPIO_StructTypedef *gpioN, uint16_t pin)
     //     gpioN->BSRR = pin;
 }
 
-// void redFlip(void)
-// {
-//     GPIO_flip(RED_LED);
-// }
-
-#define LED_FLIP(COLOR)           \
-    void LED_##COLOR##_Flip(void) \
-    {                             \
-        GPIO_flip(COLOR##_LED);   \
-    }
-
-LED_FLIP(RED)
-LED_FLIP(BLUE)
-LED_FLIP(GREEN)
-
-void delay_bad(volatile uint32_t time)
-{
-    while (time--)
-        ;
-}
-
 int main()
 {
     GPIO_InitStructTypedef g;
@@ -85,35 +59,45 @@ int main()
     RCC_AHBENR |= (1 << RCC_AHB_GPIOD_Pos);
 
     // 初始化GPIO
-    g.pin = BLUE_PIN | RED_PIN | GREEN_PIN | LED_SINGLE_PIN;
+    g.pin = GPIO_Pin7 | RED_PIN | GREEN_PIN;
     g.mode = GPIO_Mode_pull_push;
     g.speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOC, &g);
 
-    KeyStructTypedef keyUp;
-    //C99特性
-    KeyStructTypedef keyDown = {.callback = LED_GREEN_Flip, .gpioN = DOWN_PORT, .pin = DOWN_PIN, .m = keyIPU};
-    keyUp.callback = LED_BLUE_Flip;
-    keyUp.gpioN = UP_PORT;
-    keyUp.pin = UP_PIN;
-    keyUp.m = keyIPU;
+    g.pin = RED_PIN;
+    GPIO_Init(RED_PORT, &g);
 
-    key_Init(&keyUp);
-    key_Init(&keyDown);
+    g.pin = GPIO_Pin6;
+    g.mode = GPIO_Mode_IPU;
+    GPIO_Init(GPIOD, &g);
+
+    g.pin = DOWN_PIN | LEFT_PIN;
+    GPIO_Init(GPIOC, &g);
 
     GPIO_Resetbit(GPIOC, GPIO_Pin7 | GPIO_Pin8 | GPIO_Pin6);
 
     while (1)
     {
 
-        // keyIPU_DetAndRun(KEY_UP, LED_RED_Flip);
-        // keyIPU_DetAndRun(KEY_DOWN, LED_GREEN_Flip);
-        // keyIPU_DetAndRun(KEY_LEFT, LED_BLUE_Flip);
-        key_DetAndRunByFlag(&keyUp);
-        key_DetAndRunByFlag(&keyDown);
+        if (!GPIO_readInputDataBit(KEY_UP))
+        {
+            GPIO_flip(RED_LED);
+            while (!GPIO_readInputDataBit(KEY_UP))
+                ;
+        }
+        if (!GPIO_readInputDataBit(KEY_DOWN))
+        {
+            GPIO_flip(BLUE_LED);
+            while (!GPIO_readInputDataBit(KEY_DOWN))
+                ;
+        }
+        if (!GPIO_readInputDataBit(KEY_LEFT))
+        {
+            GPIO_flip(GREEN_LED);
+            while (!GPIO_readInputDataBit(KEY_LEFT))
+                ;
+        }
 
-        GPIO_flip(LED_SINGLE);
-        delay_bad(0xffff);
     }
 }
 
