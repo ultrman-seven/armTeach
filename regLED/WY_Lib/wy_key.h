@@ -1,5 +1,5 @@
-#ifndef BEAF1338_BCAA_4CDE_BB91_A8527C4CD144
-#define BEAF1338_BCAA_4CDE_BB91_A8527C4CD144
+#ifndef __WY_KEY_H__
+#define __WY_KEY_H__
 #include "wy_gpio.h"
 typedef enum
 {
@@ -17,5 +17,6 @@ typedef struct
 }KeyStructTypedef;
 void keyIPU_DetAndRun(GPIO_StructTypedef *gpioN, uint16_t pin, void (*callback)(void));
 void key_Init(KeyStructTypedef *key);
+void key_StructInit(KeyStructTypedef *key,const char * p, KEY_Mode m,void (*callback)(void));
 void key_DetAndRunByFlag(KeyStructTypedef *key);
-#endif /* BEAF1338_BCAA_4CDE_BB91_A8527C4CD144 */
+#endif /* __WY_KEY_H__ */

@@ -28,18 +28,6 @@ void SystemInit(void);
 #define LED_SINGLE_PORT GPIOC
 #define LED_SINGLE LED_SINGLE_PORT, LED_SINGLE_PIN
 
-#define UP_PIN GPIO_Pin6
-#define UP_PORT GPIOD
-#define KEY_UP UP_PORT, UP_PIN
-
-#define DOWN_PIN GPIO_Pin11
-#define DOWN_PORT GPIOC
-#define KEY_DOWN DOWN_PORT, DOWN_PIN
-
-#define LEFT_PIN GPIO_Pin12
-#define LEFT_PORT GPIOC
-#define KEY_LEFT LEFT_PORT, LEFT_PIN
-
 void GPIO_flip(GPIO_StructTypedef *gpioN, uint16_t pin);
 void GPIO_flip(GPIO_StructTypedef *gpioN, uint16_t pin)
 {
@@ -82,7 +70,6 @@ int main()
     GPIO_InitStructTypedef g;
     // 开时钟
     RCC_AHBENR |= (1 << RCC_AHB_GPIOC_Pos);
-    RCC_AHBENR |= (1 << RCC_AHB_GPIOD_Pos);
 
     // 初始化GPIO
     g.pin = BLUE_PIN | RED_PIN | GREEN_PIN | LED_SINGLE_PIN;
@@ -90,27 +77,24 @@ int main()
     g.speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOC, &g);
 
-    KeyStructTypedef keyUp;
+    KeyStructTypedef keyUp,keyDown,keyLeft,keyRight,keyMid;
     //C99特性
-    KeyStructTypedef keyDown = {.callback = LED_GREEN_Flip, .gpioN = DOWN_PORT, .pin = DOWN_PIN, .m = keyIPU};
-    keyUp.callback = LED_BLUE_Flip;
-    keyUp.gpioN = UP_PORT;
-    keyUp.pin = UP_PIN;
-    keyUp.m = keyIPU;
+    // KeyStructTypedef keyDown = {.callback = LED_GREEN_Flip, .gpioN = DOWN_PORT, .pin = DOWN_PIN, .m = keyIPU};
+    // key_Init(&keyDown);
 
-    key_Init(&keyUp);
-    key_Init(&keyDown);
+    key_StructInit(&keyUp, "D6", keyIPU, LED_BLUE_Flip);
+    key_StructInit(&keyDown, "a15", keyIPU, LED_RED_Flip);
+    key_StructInit(&keyLeft, "c12", keyIPU, LED_GREEN_Flip);
+    // key_StructInit(&keyRight, "", keyIPU, );
+    // key_StructInit(&keyMid, "", keyIPU, );
 
     GPIO_Resetbit(GPIOC, GPIO_Pin7 | GPIO_Pin8 | GPIO_Pin6);
 
     while (1)
     {
-
-        // keyIPU_DetAndRun(KEY_UP, LED_RED_Flip);
-        // keyIPU_DetAndRun(KEY_DOWN, LED_GREEN_Flip);
-        // keyIPU_DetAndRun(KEY_LEFT, LED_BLUE_Flip);
         key_DetAndRunByFlag(&keyUp);
         key_DetAndRunByFlag(&keyDown);
+        key_DetAndRunByFlag(&keyLeft);
 
         GPIO_flip(LED_SINGLE);
         delay_bad(0xffff);

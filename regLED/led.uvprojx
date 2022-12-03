@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\regLED</IncludePath>
+              <IncludePath>..\regLED;.\WY_HAL;.\WY_Lib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -381,27 +381,42 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>USER</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HAL</GroupName>
+          <Files>
+            <File>
+              <FileName>wy_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WY_HAL\wy_gpio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Lib</GroupName>
+          <Files>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\WY_Lib\key.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>StartUp</GroupName>
+          <Files>
             <File>
               <FileName>startup_MM32SPIN2xx_p.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup_MM32SPIN2xx_p.s</FilePath>
-            </File>
-            <File>
-              <FileName>wy_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\wy_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\key.c</FilePath>
             </File>
           </Files>
         </Group>

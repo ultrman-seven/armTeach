@@ -3,6 +3,7 @@
         "*.pyx": "python",
         "stdint.h": "c",
         "wy_gpio.h": "c",
-        "wy_common.h": "c"
+        "wy_common.h": "c",
+        "wy_key.h": "c"
     }
 }
