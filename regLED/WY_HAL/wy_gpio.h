@@ -11,6 +11,7 @@ typedef struct
     uint32_t BSRR;
     uint32_t BRR;
     uint32_t LCKR;
+    uint32_t __RESERVED_;
     uint32_t AFRL;
     uint32_t AFRH;
 } GPIO_StructTypedef;
