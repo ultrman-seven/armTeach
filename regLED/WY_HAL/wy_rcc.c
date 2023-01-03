@@ -18,4 +18,3 @@ typedef struct
     uint32_t HSI_DLY;
     uint32_t HSE_DLY;
 }RCC_StructTypedef;
-
